@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghostpunk Character Sheet</title>
+<!-- 画像生成用ライブラリ html2canvas の読み込み -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+  <!-- IDカード本体 -->
+  <div class="character-sheet" id="character-sheet">
+    <label class="portrait-section">
+      <input type="file" id="image-input" accept="image/*">
+      <div class="upload-text" id="upload-text">TAP TO UPLOAD</div>
+      <img src="" id="portrait-preview" class="portrait-preview" alt="Portrait">
+    </label>
+
+    <div class="info-section">
+      <div class="header-section">
+        <div class="header-top">
+          <div class="world-title">GHOST_PUNK // LICENSE</div>
+          <div class="id-number" id="id-number">NO. ----</div>
+        </div>
+        <input type="text" class="name-input" id="name-input" value="CHARACTER NAME">
+      </div>
+
+      <div class="info-group inline-group">
+        <span class="info-label">ROLE</span>
+        <select class="form-control">
+          <option>レンジャー</option>
+          <option>シークレット</option>
+          <option>ドクター</option>
+          <option>エンジニック</option>
+          <option>クラッカー</option>
+        </select>
+      </div>
+
+      <div class="section-title">SKILLS</div>
+
+      <div class="info-group">
+        <div class="memory-slot">
+          <span class="slot-id">MEMORY</span>
+          <select class="form-control">
+            <option>👊アタック</option>
+            <option>🧪サポート</option>
+            <option>🔍サーチ</option>
+            <option>🎲テクニック</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="info-group">
+        <ul class="skill-list normal-skills">
+          <li>
+            <span class="slot-id">01</span>
+            <select class="form-control">
+              <option>スタミナ</option>
+              <option>メンタル</option>
+              <option>パルクール</option>
+              <option>センス</option>
+              <option>コミュ</option>
+              <option>チャーム</option>
+              <option>スペシャル</option>
+              <option>ラッキー</option>
+            </select>
+          </li>
+          <li>
+            <span class="slot-id">02</span>
+            <select class="form-control">
+              <option>スタミナ</option>
+              <option>メンタル</option>
+              <option>パルクール</option>
+              <option>センス</option>
+              <option>コミュ</option>
+              <option>チャーム</option>
+              <option>スペシャル</option>
+              <option>ラッキー</option>
+            </select>
+          </li>
+          <li>
+            <span class="slot-id">03</span>
+            <select class="form-control">
+              <option>スタミナ</option>
+              <option>メンタル</option>
+              <option>パルクール</option>
+              <option>センス</option>
+              <option>コミュ</option>
+              <option>チャーム</option>
+              <option>スペシャル</option>
+              <option>ラッキー</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-group">
+        <span class="info-label">TAGS</span>
+        <input type="text" class="tag-input" value="#GHOST #HACKER">
+      </div>
+
+      <div class="info-group">
+        <span class="info-label">MEMO / LOG</span>
+        <textarea class="memo-input" spellcheck="false">ここにキャラクターの生い立ちや詳細なデータログを入力できます。</textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ダウンロードボタン -->
+  <button id="download-btn" class="download-btn">ライセンスを発行</button>
+</div>
+
+<!-- JavaScriptファイルの読み込み -->
+<script src="script.js"></script>
+</body>
+</html>

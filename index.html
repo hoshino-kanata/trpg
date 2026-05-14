@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GHOST_PUNK // PORTAL</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+  :root {
+    --bg-base: #100e17;
+    --neon-pink: #ffb3e6;
+    --neon-cyan: #b3ffff;
+    --neon-purple: #d9b3ff;
+    --grid-line: rgba(179, 255, 255, 0.05);
+  }
+
+  body {
+    background-color: var(--bg-base);
+    background-image: 
+      linear-gradient(transparent 97%, var(--grid-line) 97%),
+      linear-gradient(90deg, transparent 97%, var(--grid-line) 97%);
+    background-size: 40px 40px;
+    color: #fff;
+    font-family: 'Share Tech Mono', monospace, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* CRT走査線エフェクト */
+  body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  /* 画面全体に薄くかかるビネット（四隅の暗がり） */
+  .vignette {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.8) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .terminal-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    animation: fadeIn 2s ease-out;
+  }
+
+  /* メインタイトル */
+  .main-title {
+    font-size: 4rem;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 0.2em;
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px var(--neon-purple),
+      0 0 20px var(--neon-purple),
+      0 0 40px var(--neon-pink);
+  }
+
+  /* サブタイトル（タイピングアニメーション風） */
+  .system-status {
+    font-size: 1.2rem;
+    color: var(--neon-cyan);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border-right: 2px solid var(--neon-cyan);
+    padding-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    /* ターミナルのカーソル点滅 */
+    animation: blink 0.8s step-end infinite;
+  }
+
+  /* リンクボタン */
+  .cyber-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--neon-cyan);
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    padding: 1rem 3rem;
+    border: 1px solid var(--neon-cyan);
+    background: rgba(179, 255, 255, 0.05);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(179, 255, 255, 0.1);
+  }
+
+  /* ボタンホバー時のエフェクト */
+  .cyber-btn:hover {
+    color: var(--bg-base);
+    background: var(--neon-cyan);
+    box-shadow: 
+      0 0 10px var(--neon-cyan),
+      0 0 20px var(--neon-cyan),
+      0 0 40px var(--neon-cyan);
+    text-shadow: none;
+  }
+
+  /* ボタンの下に表示される小さな補足テキスト */
+  .hint-text {
+    font-size: 0.8rem;
+    color: var(--neon-pink);
+    opacity: 0.7;
+    letter-spacing: 0.1em;
+    margin-top: -1rem;
+  }
+
+  /* アニメーション定義 */
+  @keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: var(--neon-cyan); }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  /* スマホ向け調整 */
+  @media (max-width: 600px) {
+    .main-title {
+      font-size: 2.5rem;
+    }
+    .system-status {
+      font-size: 0.9rem;
+    }
+    .cyber-btn {
+      font-size: 1rem;
+      padding: 0.8rem 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="vignette"></div>
+
+<div class="terminal-container">
+  <div class="system-status">SYSTEM ONLINE_</div>
+  
+  <h1 class="main-title">GHOST_PUNK</h1>
+  
+  <!-- キャラクターシートへのリンク -->
+  <!-- GitHub Pages 等の環境に合わせて、相対パスで指定しています -->
+  <a href="./Ghost_Punk/charactersheets/index.html" class="cyber-btn">
+    ACCESS // LICENSE_DATA
+  </a>
+  
+  <div class="hint-text">LOADING TRPG SYSTEM PORTAL...</div>
+</div>
+
+</body>
+</html>

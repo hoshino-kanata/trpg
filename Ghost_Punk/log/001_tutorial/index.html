@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GHOST PUNK - チュートリアル</title>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <button id="theme-toggle" class="theme-toggle" aria-label="テーマ切替">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" /><path d="m19.07 4.93-1.41 1.41" /><path d="M20 12h2" /><path d="m17.66 17.66 1.41 1.41" /><path d="M12 20v2" /><path d="m6.34 17.66-1.41 1.41" /><path d="M2 12h2" /><path d="m4.93 4.93 1.41 1.41" />
+    </svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+    </svg>
+  </button>
+
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-noise"></div>
+  <div class="grid-bg"></div>
+
+  <div class="container">
+    
+    <header class="header">
+      <div class="header-top">
+        <h1 class="title">
+          <span class="title-en">GHOST PUNK</span>
+          <span class="title-ja">チュートリアル</span>
+        </h1>
+      </div>
+
+      <div class="meta">
+        <div class="meta-item"><span class="label">DATE</span>2026.05.14</div>
+        <div class="meta-item"><span class="label">KP</span>おばけ</div>
+        <div class="meta-item"><span class="label">PL</span>星乃かなた / M</div>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        
+        <details class="accordion" open>
+          <summary class="sidebar-title">INDEX</summary>
+          <div class="accordion-content">
+            <nav class="toc-body">
+              <ul class="toc-list">
+                <li><a href="#scene-1" class="pill">1. 縄で拘束された状態からスタート</a></li>
+                <li><a href="#scene-2" class="pill">2. 経験者なのに動かないピンク</a></li>
+                <li><a href="#scene-3" class="pill">3. アタックメモリ強奪作戦</a></li>
+                <li><a href="#scene-4" class="pill">4. 契約破棄とメモリ返還</a></li>
+                <li><a href="#scene-5" class="pill">5. ハチの中で決まった序列</a></li>
+                <li><a href="#scene-6" class="pill">6. ブルー、ついに見せ場</a></li>
+                <li><a href="#scene-7" class="pill">7. 脱出</a></li>
+              </ul>
+            </nav>
+          </div>
+        </details>
+
+        <details class="accordion" open>
+          <summary class="sidebar-title">CHARACTERS</summary>
+          <div class="accordion-content">
+            <div class="char-list">
+              <div class="char-item pink">
+                <div class="char-icon"></div>
+                <div class="char-info">
+                  <div class="char-name">ピンク <span class="char-pl">/ PL: 星乃かなた</span></div>
+                  <div class="char-desc">アタックメモリ</div>
+                </div>
+              </div>
+              <div class="char-item yellow">
+                <div class="char-icon"></div>
+                <div class="char-info">
+                  <div class="char-name">ハチ <span class="char-pl">/ PL: M</span></div>
+                  <div class="char-desc">シークレットメモリ</div>
+                </div>
+              </div>
+              <div class="char-item blue">
+                <div class="char-icon"></div>
+                <div class="char-info">
+                  <div class="char-name">ブルー <span class="char-pl">/ KP: おばけ</span></div>
+                  <div class="char-desc">サポートメモリ</div>
+                </div>
+              </div>
+              <div class="char-item purple">
+                <div class="char-icon"></div>
+                <div class="char-info">
+                  <div class="char-name">CC <span class="char-pl">/ KP: おばけ</span></div>
+                  <div class="char-desc">ナビゲーター</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </aside>
+
+    <main class="main">
+      <article class="log-content">
+        
+        <section id="scene-1" class="scene">
+          <h2 class="scene-title">1. 縄で拘束された状態からスタート</h2>
+          <div class="scene-body">
+            
+            <p class="text">3人が目を覚ましたのは、無機質なメインルーム。全員がデフォルトの同じ姿をしたまま、手足を縄で拘束されていた。<br>
+            ピンクは、アタックメモリの力で力任せに縄を引きちぎる。床に転がりながら助けを求めるブルーとハチを見下ろし、ピンクは冷たく言い放った。</p>
+
+            <div class="speech-row bubble-pink">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「見返りがないなら助けない」</p>
+              </div>
+            </div>
+
+            <p class="text">あっさりと見捨てようとするピンクに対し、狡猾なブルーがすかさず交渉を持ちかける。</p>
+
+            <div class="speech-row bubble-blue">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「外に出たらいくらでも金をやる」</p>
+              </div>
+            </div>
+
+            <p class="text">この一言で交渉は即成立。ピンクはブルーの縄を解き、ハチも「そのついで」として解放されることとなった。</p>
+
+          </div>
+        </section>
+
+        <section id="scene-2" class="scene">
+          <h2 class="scene-title">2. 経験者なのに動かないピンク</h2>
+          <div class="scene-body">
+            
+            <p class="text">CCちゃんから「ゲートから脱出すればクリア」と説明を受けるも、経験者であるはずのピンクは一切の探索を拒否し、ゲート前で堂々と待機を決め込む。<br>
+            仕方なく探索を始めたハチは、右側の「関係者以外立ち入り禁止」の扉を発見。一方、左側の部屋の前ではブルーが奇妙な動きを繰り返していた。</p>
+
+            <div class="speech-row bubble-yellow">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「……何してるの？」</p>
+              </div>
+            </div>
+
+            <div class="speech-row bubble-blue">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「見ろ。扉の上の小窓があるだろう？あそこから入ろうとしていた」</p>
+              </div>
+            </div>
+
+            <p class="text">華麗なパルクールで侵入を試みていたらしいが、端から見ればただ奇怪なダンスを踊っているようにしか見えなかった。</p>
+
+          </div>
+        </section>
+
+        <section id="scene-3" class="scene">
+          <h2 class="scene-title">3. アタックメモリ強奪作戦</h2>
+          <div class="scene-body">
+            
+            <p class="text">非協力的なピンクの態度を見かねたブルーは、ハチに悪魔の囁きをする。</p>
+
+            <div class="speech-row bubble-blue">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「あいつのアタックメモリを奪ってやろうぜ」</p>
+              </div>
+            </div>
+
+            <p class="text">少し迷ったハチだったが、「これで協力的になってくれるかもしれない」と承諾。<br>
+            二人がかりで不意を突き、見事にピンクの首からアタックメモリを引き抜くことに成功する。<br>
+            その後ハチはサポートメモリを装着し、倒れ伏すピンクの背中を「踏み台」にして小窓へ跳躍。鮮やかに内側から鍵を開けてみせた。</p>
+
+          </div>
+        </section>
+
+        <section id="scene-4" class="scene">
+          <h2 class="scene-title">4. 契約破棄とメモリ返還</h2>
+          <div class="scene-body">
+            
+            <p class="text">アタックメモリを奪われ憤慨するピンクに対し、ブルーは得意げに取引を持ちかける。</p>
+
+            <div class="speech-row bubble-blue">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「さっきの金銭契約をなかったことにすれば、返してやる」</p>
+              </div>
+            </div>
+
+            <p class="text">するとピンクは、躊躇うことなく即座に契約書を破棄。あっさりとメモリを取り戻した。<br>
+            カチャリ、と首のスロットにメモリが収まる音が響いた直後。ピンクは迷いなく宣言した。</p>
+
+            <div class="speech-row bubble-pink">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker">星乃かなた</div>
+                <p class="speech-text">「殴ります」</p>
+              </div>
+            </div>
+
+            <p class="text">次の瞬間、ハチとブルーに報復の拳が飛ぶ。もちろん手加減はしていた。だが、取り戻した瞬間に即報復へ移る執念深さは圧倒的だった。本人いわく、</p>
+
+            <div class="speech-row bubble-pink">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「唯一の攻撃手段という生殺与奪の権を他人に握らせたくない」</p>
+              </div>
+            </div>
+
+            <p class="text">とのこと。理屈はわかる。でも、どう見てもアタックメモリジャンキーだった。</p>
+
+          </div>
+        </section>
+
+        <section id="scene-5" class="scene">
+          <h2 class="scene-title">5. ハチの中で決まった序列</h2>
+          <div class="scene-body">
+            
+            <p class="text">左の部屋で見つけた作業リーダーのロッカーには、鍵がかかっていた。鍵束の中にも、それらしい鍵は見当たらない。</p>
+
+            <div class="speech-row bubble-pink">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「壊すしかない。」</p>
+              </div>
+            </div>
+
+            <p class="text">そう判断したものの、ピンクはアタックメモリの使いすぎでかなり消耗していた。試しに一度殴ってみるが、ロッカーはびくともしない。<br>
+            そのとき、ハチが静かに申し出た。</p>
+
+            <div class="speech-row bubble-yellow">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「僕が代わりにやろうか？」</p>
+              </div>
+            </div>
+
+            <p class="text">一度奪われ、取り返した直後には報復までしたアタックメモリ。それはピンクにとって、他人に預けたくない生命線だった。<br>
+            それでもピンクは少し考えた後、首元のスロットに手を伸ばす。<br>
+            カチャリ。<br>
+            メモリを抜き取り、ハチへ差し出した。</p>
+
+            <div class="speech-row bubble-pink">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「……わかった。お前になら貸してやる。」</p>
+              </div>
+            </div>
+
+            <p class="text">このセッションで、ピンクが自分の意思でアタックメモリを託したのは、この一度だけだった。<br>
+            ハチはその信頼に応え、見事ロッカーを破壊。中から探索に役立つ手がかりを手に入れる。<br>
+            そしてその頃、ハチはあることに気づいていた。<br>
+            「ブルーは今のところ、実質何もしていない。」<br>
+            イヌ科特有の嗅覚か、あるいは探偵としての観察眼か。ハチの中で、静かに、しかし明確に「群れの序列」が決定される。</p>
+
+            <h3 class="log-h3">序列：ピンク ＞ ハチ ＞ ブルー</h3>
+
+            <p class="text">散らかった棚を調べる際、ハチはブルーを一瞥し、当然のように言った。</p>
+
+            <div class="speech-row bubble-yellow">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「ほら行くよ。」</p>
+              </div>
+            </div>
+
+            <p class="text">その声音と眼差しは、完全に格下を見るそれだった。<br>
+            ハチはおそらくイヌ科である。そう考えると、すべて辻褄が合う。<br><br>
+            部屋の中から以下を発見し、ゲート解除に必要そうなアイテムが揃い、脱出の準備が整っていく。</p>
+
+            <ul class="log-list">
+              <li>鍵の束</li>
+              <li>作業リーダーのカードキー</li>
+              <li>パスワードメモ（△○□◇）</li>
+              <li>雑巾</li>
+              <li>ケミカルペン</li>
+            </ul>
+
+          </div>
+        </section>
+
+        <section id="scene-6" class="scene">
+          <h2 class="scene-title">6. ブルー、ついに見せ場</h2>
+          <div class="scene-body">
+            
+            <p class="text">「今度こそ活躍しろ」と脅され、右の発電室へと送り込まれたブルー。無情にもピンクによって外から扉が閉められ、密室に閉じ込められてしまう。<br>
+            しばらくの沈黙の後、扉の向こうから高らかな声が響き渡った。</p>
+
+            <div class="speech-row bubble-blue">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「ハッ！馬鹿どもが！！！」</p>
+              </div>
+            </div>
+
+            <p class="text">直後、重厚なエンジン音が鳴り響き、施設の明かりがパッと灯る。<br>
+            実際には、ブルーが天才的な手腕で発電機を修理した劇的な瞬間だった。しかし、その姿は誰の目にも触れていない。外にいる二人からすれば、「密室の中で急にイキり散らした直後、都合よく電源が入った」ようにしか見えず、扉を開けるとそこにはただ得意げな顔をした男が立っているだけだった。</p>
+
+          </div>
+        </section>
+
+        <section id="scene-7" class="scene">
+          <h2 class="scene-title">7. 脱出</h2>
+          <div class="scene-body">
+            
+            <p class="text">ゲートの電源が入り、カードキーを通すと暗証番号入力画面が表示される。パスワードメモには「△○□◇」と書かれていた。<br>
+            ハチは少し考えた後、</p>
+
+            <div class="speech-row bubble-yellow">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「僕も3回くらいは間違えていいと思ってる！」</p>
+              </div>
+            </div>
+
+            <p class="text">と力強く宣言し、一切の迷いなくパネルに打ち込むハチ。</p>
+
+            <div class="speech-row bubble-yellow">
+              <div class="icon"></div>
+              <div class="speech">
+                <div class="speaker"></div>
+                <p class="speech-text">「3044」</p>
+              </div>
+            </div>
+
+            <p class="text">（※図形の画数・角の数）<br>
+            ピピッという電子音と共に、正解を告げるランプが点灯する。重い音を立ててゲートが開き、光が差し込む。<br>
+            互いを信用しているとは言い難く、利害関係だけで結ばれた3人。<br>
+            しかし、ピンクの執念深さ、ブルーの報われなさ、ハチのドライな観察眼が奇跡的に噛み合った結果、彼らは無傷でゲートの外へと歩き出し、見事にチュートリアルを突破したのだった。</p>
+
+          </div>
+        </section>
+
+      </article>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

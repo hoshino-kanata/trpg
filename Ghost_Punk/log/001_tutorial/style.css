@@ -27,9 +27,9 @@
   --bg-orange: url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=400&auto=format&fit=crop');
 
   /* YELLOW */
-  --name-yellow: "YELLOW PC";
-  --icon-yellow: url('https://images.unsplash.com/photo-1544502062-f82887f03d1c?q=80&w=150&auto=format&fit=crop');
-  --bg-yellow: url('https://images.unsplash.com/photo-1544502062-f82887f03d1c?q=80&w=400&auto=format&fit=crop');
+  --name-yellow: "YELLOW : HACHI";
+  --icon-yellow: url('../000_characters/CCicon_yellow.webp');
+  --bg-yellow: url('../000_characters/CCicon_yellow.webp');
 
   /* GREEN */
   --name-green: "GREEN PC";
@@ -42,19 +42,19 @@
   --bg-cyan: url('https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=400&auto=format&fit=crop');
 
   /* BLUE */
-  --name-blue: "BLUE PC";
-  --icon-blue: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop');
-  --bg-blue: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop');
+  --name-blue: "BLUE : ECHO";
+  --icon-blue: url('../000_characters/CCicon_blue.webp');
+  --bg-blue: url('../000_characters/bg_Echo_Batespus.webp');
 
   /* PURPLE */
-  --name-purple: "PURPLE PC";
-  --icon-purple: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=150&auto=format&fit=crop');
-  --bg-purple: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop');
+  --name-purple: "CC chan";
+  --icon-purple: url('../000_characters/CCicon_purple.webp');
+  --bg-purple: url('../000_characters/CCicon_purple.webp');
 
   /* PINK */
-  --name-pink: "PINK PC";
-  --icon-pink: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=150&auto=format&fit=crop');
-  --bg-pink: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=400&auto=format&fit=crop');
+  --name-pink: "PINK : WOLF";
+  --icon-pink: url('../000_characters/CCicon_pink.webp');
+  --bg-pink: url('../000_characters/CCicon_pink.webp');
 }
 
 body.light-mode {

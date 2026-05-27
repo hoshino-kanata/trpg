@@ -425,14 +425,14 @@ body.light-mode .modal__backdrop { background: rgba(255, 255, 255, 0.85); }
 /* メディア背景 */
 .modal__media { position: absolute; inset: 0; z-index: 1; overflow: hidden; background: #000; transition: background 0.3s; 
 /* ⬇️ ここから追記 */
-  background-image: url('../000_characters/okumono_sf14.png');
+  background-image: url('/Ghost_Punk/log/000_characters/okumono_sf14.webp');
   background-size: cover;
   background-position: center;
   /* ⬆️ ここまで追記 */
 }
 body.light-mode .modal__media { background: #fff; 
 /* ⬇️ ここから追記 */
-  background-image: url('../000_characters/okumono_sf24.png');
+  background-image: url('/Ghost_Punk/log/000_characters/okumono_sf24.webp');
   background-size: cover;
   background-position: center;
   /* ⬆️ ここまで追記 */

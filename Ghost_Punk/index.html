@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GHOST PUNK - DATA ARCHIVE</title>
+  
+  <link rel="stylesheet" href="log/000_template/style.css">
+
+  <style>
+    /* =========================================
+       アーカイブ画面専用スタイル
+    ========================================= */
+    
+    /* style.css のログ用レイアウトをリセット */
+    .container {
+      display: block !important;
+      max-width: 1100px !important;
+      margin: 30px auto 80px auto !important;
+    }
+
+    /* 2カラムのレイアウト（デフォルト＝スマホ版：上から順に縦一列） */
+    .portal-menu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 28px;
+    }
+
+    /* スマホ版でのバナー下部の余白をリセット */
+    .license-banner {
+      margin-bottom: 0 !important;
+    }
+
+    /* PC版（画面幅900px以上）のレイアウト配置を定義 */
+    @media (min-width: 900px) {
+      .portal-menu-grid {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        /* grid-template-areas でパーツの配置を指定 */
+        grid-template-areas: 
+          "main banner"
+          "main sidebar";
+        gap: 32px;
+        align-items: start;
+      }
+      
+      .main-section {
+        grid-area: main;
+      }
+      
+      .license-banner {
+        grid-area: banner;
+      }
+      
+      .sidebar-section {
+        grid-area: sidebar;
+      }
+    }
+
+    /* --- 左側：アーカイブレコード（リスト） --- */
+    .archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* 各ログの行データ */
+    .archive-record {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      background: rgba(20, 18, 32, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--c, var(--neon-cyan));
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .archive-record:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--c, var(--neon-cyan));
+      transform: translateX(6px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 背景の透かし文字演出 */
+    .archive-record::after {
+      content: attr(data-bg-text);
+      position: absolute;
+      right: -10px;
+      bottom: -15px;
+      font-family: var(--font-en);
+      font-size: 80px;
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.03);
+      pointer-events: none;
+      transition: 0.3s;
+    }
+    .archive-record:hover::after {
+      -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+      transform: scale(1.05);
+    }
+
+    .rec-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: var(--font-en);
+    }
+    .rec-id {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--c, var(--neon-cyan));
+      letter-spacing: 0.1em;
+    }
+    .rec-date {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .rec-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 2;
+    }
+    .rec-title {
+      font-family: var(--font-ja);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-main);
+    }
+    .rec-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .rec-tags {
+      display: flex;
+      gap: 10px;
+      font-family: var(--font-en);
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+    }
+    .rec-tags span {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 3px 8px;
+      border-radius: 2px;
+      color: var(--text-muted);
+    }
+
+    .rec-action {
+      font-family: var(--font-en);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--c, var(--neon-cyan));
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s;
+      z-index: 2;
+    }
+    .archive-record:hover .rec-action {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* --- 右側：サイドバー --- */
+    .sidebar-box {
+      background: rgba(20, 18, 32, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .portal-link {
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    /* --- 新規追加：ライセンス発行バナー --- */
+    .license-banner {
+      display: block;
+      position: relative;
+      background: rgba(255, 179, 230, 0.05); /* neon-pinkをベースにした背景 */
+      border: 1px solid var(--neon-pink);
+      border-radius: 8px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: inset 0 0 15px rgba(255, 179, 230, 0.05);
+    }
+    .license-banner:hover {
+      background: rgba(255, 179, 230, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 179, 230, 0.2), inset 0 0 20px rgba(255, 179, 230, 0.1);
+      border-color: #fff;
+    }
+    
+    /* 左側のネオンライン */
+    .license-banner::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--neon-pink);
+      z-index: 3;
+      box-shadow: 0 0 10px var(--neon-pink);
+    }
+
+    /* 背景の斜めストライプ（警戒色風） */
+    .banner-bg-stripe {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 179, 230, 0.05) 10px,
+        rgba(255, 179, 230, 0.05) 20px
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .banner-inner {
+      display: flex;
+      align-items: center;
+      padding: 18px 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* シールド/IDアイコン */
+    .banner-icon {
+      color: var(--neon-pink);
+      width: 36px;
+      height: 36px;
+      margin-right: 20px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 5px rgba(255, 179, 230, 0.5));
+    }
+    
+    .banner-text {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .banner-sub {
+      font-family: var(--font-en);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--neon-pink);
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+    .banner-main {
+      font-family: var(--font-en);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+    .banner-arrow {
+      font-family: var(--font-en);
+      font-weight: 900;
+      color: var(--neon-pink);
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .license-banner:hover .banner-arrow {
+      transform: translateX(6px);
+    }
+
+    /* スマホ対応の微調整 */
+    @media (max-width: 600px) {
+      .archive-record {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
+      }
+      .rec-meta {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        padding-bottom: 8px;
+      }
+      .rec-action { display: none; }
+      
+      .banner-inner { padding: 16px; }
+      .banner-icon { width: 28px; height: 28px; margin-right: 14px; }
+      .banner-main { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-noise"></div>
+  <div class="grid-bg"></div>
+
+  <div class="container">
+    
+    <header class="header">
+      <div class="header-top">
+        <h1 class="title">
+          <span class="title-en">GHOST PUNK</span>
+          <span class="title-ja">DATA ARCHIVE / ログ記録保管庫</span>
+        </h1>
+      </div>
+      <div class="meta">
+        <div class="meta-item"><span class="label">HOST</span>HOSHINO_KANATA</div>
+        <div class="meta-item"><span class="label">STATUS</span>ONLINE</div>
+      </div>
+    </header>
+
+    <div class="portal-menu-grid">
+      
+      <a href="charactersheets/index.html" class="license-banner reveal">
+        <div class="banner-bg-stripe"></div>
+        <div class="banner-inner">
+          <div class="banner-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <circle cx="8.5" cy="11.5" r="2.5"></circle>
+              <path d="M14 11h4"></path>
+              <path d="M14 15h4"></path>
+            </svg>
+          </div>
+          <div class="banner-text">
+            <span class="banner-sub">AGENT REGISTRATION</span>
+            <span class="banner-main">NEW LICENSE</span>
+          </div>
+          <div class="banner-arrow">→</div>
+        </div>
+      </a>
+      
+      <section class="main-section">
+        <h2 class="scene-title" style="margin-bottom: 24px;">SESSIONS ARCHIVE</h2>
+        <div class="archive-list">
+          
+          <a href="log/001_tutorial/index.html" class="archive-record reveal" style="--c: var(--neon-cyan);" data-bg-text="01">
+            <div class="rec-meta">
+              <span class="rec-id">FILE.01</span>
+              <span class="rec-date">2026.05.27</span>
+            </div>
+            <div class="rec-body">
+              <h3 class="rec-title">チュートリアルセッション</h3>
+              <p class="rec-desc">システム接続、操作テスト、および基本ルールの確認用ログデータ。すべての始まりの記録。</p>
+              <div class="rec-tags">
+                <span>KP: 星乃かなた</span>
+                <span>2 Players</span>
+              </div>
+            </div>
+            <div class="rec-action">READ LOG →</div>
+          </a>
+
+          </div>
+      </section>
+
+      <aside class="sidebar-section">
+        <h2 class="scene-title" style="margin-bottom: 24px;">AGENTS</h2>
+        <div class="sidebar-box">
+          <p class="text" style="font-size: 0.75rem; margin-bottom: 20px;">
+            各エージェントの詳細プロファイル。クリックでデータファイルへアクセスします。
+          </p>
+          <div class="char-list">
+
+            <!--
+            <a href="log/000_characters/character_echo.html" class="portal-link">
+              <div class="char-item cyan" style="margin-bottom: 12px; cursor: pointer;">
+                <div class="char-icon" style="background-image: var(--icon-cyan);"></div>
+                <div class="char-info">
+                  <div class="char-name">エコー・ベイツパス <span class="char-pl">/ PL: お名前</span></div>
+                  <div class="char-desc">ドクター / サポートメモリ</div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="portal-link">
+              <div class="char-item pink" style="margin-bottom: 12px; cursor: pointer;">
+                <div class="char-icon" style="background-image: var(--icon-pink);"></div>
+                <div class="char-info">
+                  <div class="char-name">ピンク <span class="char-pl">/ PL: お名前</span></div>
+                  <div class="char-desc">レンジャー / アタックメモリ</div>
+                </div>
+              </div>
+            </a>
+            -->
+
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.05 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

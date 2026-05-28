@@ -1,7 +1,11 @@
 <section class="modal__shell" role="dialog" aria-modal="true" aria-labelledby="modalName">
   
   <div class="modal__media">
-    <img id="modalImage" src="../000_characters/Echo_Batespus.webp" alt="エコー・ベイツパス" style="object-position: center 15%;" />
+    <!-- ▼ 修正：環境に合わせて自動でパスを切り替える魔法の画像タグ ▼ -->
+    <img id="modalImage" 
+         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+         onload="this.onload=null; this.src = window.location.pathname.includes('log/') ? '../000_characters/Echo_Batespus.webp' : 'log/000_characters/Echo_Batespus.webp';" 
+         alt="エコー・ベイツパス" style="object-position: center 15%;" />
     <video id="modalVideo" muted loop playsinline style="display:none;"></video>
     <div class="modal__mediaOverlay"></div>
   </div>
@@ -164,7 +168,8 @@
               <div class="session-list-title" style="color: var(--neon-cyan);">// EXPLORED SESSIONS</div>
               <ul class="session-ul">
                 <li>
-                  <a href="../001_tutorial/index.html">
+                  <!-- ▼ 修正：環境に合わせて自動でパスを切り替えるリンク ▼ -->
+                  <a href="javascript:void(0)" onclick="window.location.href = window.location.pathname.includes('log/') ? '../001_tutorial/index.html' : 'log/001_tutorial/index.html';">
                     <span class="s-date">2026.05.14</span>
                     <span class="s-kp">KP: おばけ</span>
                     <span class="s-name">チュートリアル</span>

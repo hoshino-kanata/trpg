@@ -20,41 +20,43 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.speech-row').forEach(el => observer.observe(el));
 
   // --- アコーディオンの巻き戻りアニメーション ---
-  document.querySelectorAll('.accordion summary').forEach(summary => {
-    summary.addEventListener('click', function (e) {
-      if (window.innerWidth < 900) return;
+  // 動的に生成されるモーダル内のアコーディオンにも対応させるため、イベントの書き方を修正
+  document.body.addEventListener('click', function (e) {
+    const summary = e.target.closest('.accordion summary');
+    if (!summary) return;
 
-      e.preventDefault();
-      const details = this.parentElement;
-      const content = this.nextElementSibling;
-      
-      if (details.open) {
-        content.style.overflow = 'hidden';
-        content.style.height = content.offsetHeight + 'px';
-        content.offsetHeight; 
-        content.style.transition = 'height 0.3s ease-out';
-        content.style.height = '0px';
+    // ▼ 削除： if (window.innerWidth < 900) return; （これでスマホでも動くようになります）
 
-        setTimeout(() => {
-          details.open = false;
-          content.style.height = '';
-          content.style.transition = '';
-        }, 300);
-      } else {
-        details.open = true;
-        content.style.overflow = 'hidden';
-        content.style.height = '0px';
-        content.style.transition = 'height 0.3s ease-out';
-        content.offsetHeight; 
-        content.style.height = content.scrollHeight + 'px';
+    e.preventDefault();
+    const details = summary.parentElement;
+    const content = summary.nextElementSibling;
+    
+    if (details.open) {
+      content.style.overflow = 'hidden';
+      content.style.height = content.offsetHeight + 'px';
+      content.offsetHeight; 
+      content.style.transition = 'height 0.3s ease-out';
+      content.style.height = '0px';
 
-        setTimeout(() => {
-          content.style.height = '';
-          content.style.transition = '';
-          content.style.overflow = 'visible';
-        }, 300);
-      }
-    });
+      setTimeout(() => {
+        details.open = false;
+        content.style.height = '';
+        content.style.transition = '';
+      }, 300);
+    } else {
+      details.open = true;
+      content.style.overflow = 'hidden';
+      content.style.height = '0px';
+      content.style.transition = 'height 0.3s ease-out';
+      content.offsetHeight; 
+      content.style.height = content.scrollHeight + 'px';
+
+      setTimeout(() => {
+        content.style.height = '';
+        content.style.transition = '';
+        content.style.overflow = 'visible';
+      }, 300);
+    }
   });
 
   // =========================================

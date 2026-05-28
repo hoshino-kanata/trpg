@@ -543,11 +543,24 @@ body.light-mode .acid-card:hover .card-inner { border-color: rgba(0,0,0,0.3); }
 .text-neon-pink { color: var(--neon-pink); text-shadow: 0 0 8px rgba(255, 179, 230, 0.5); }
 .text-neon-purple { color: var(--neon-purple); text-shadow: 0 0 8px rgba(217, 179, 255, 0.5); }
 .text-neon-yellow { color: var(--neon-yellow); text-shadow: 0 0 8px rgba(255, 240, 179, 0.5); }
-.neon-bg-pink { background: var(--neon-pink); color: #000; box-shadow: 0 0 10px rgba(255, 179, 230, 0.4); }
-.neon-bg-cyan { background: var(--neon-cyan); color: #000; box-shadow: 0 0 10px rgba(179, 255, 255, 0.4); }
 
-.acid-sticker { position: absolute; z-index: 10; display: grid; place-items: center; font-family: var(--font-en); font-weight: 800; border: 1px solid #000; }
-.acid-sticker.neon-bg-pink { top: -15px; right: 20px; width: 44px; height: 44px; border-radius: 50%; font-size: 24px; transform: rotate(15deg); }
+/* 全8色分のステッカー・バッジ用背景色を定義 */
+.neon-bg-red { background: var(--neon-red); color: #000; box-shadow: 0 0 10px rgba(255, 179, 179, 0.4); }
+.neon-bg-orange { background: var(--neon-orange); color: #000; box-shadow: 0 0 10px rgba(255, 217, 179, 0.4); }
+.neon-bg-yellow { background: var(--neon-yellow); color: #000; box-shadow: 0 0 10px rgba(255, 240, 179, 0.4); }
+.neon-bg-green { background: var(--neon-green); color: #000; box-shadow: 0 0 10px rgba(179, 255, 179, 0.4); }
+.neon-bg-cyan { background: var(--neon-cyan); color: #000; box-shadow: 0 0 10px rgba(179, 255, 255, 0.4); }
+.neon-bg-blue { background: var(--neon-blue); color: #000; box-shadow: 0 0 10px rgba(179, 179, 255, 0.4); }
+.neon-bg-purple { background: var(--neon-purple); color: #000; box-shadow: 0 0 10px rgba(217, 179, 255, 0.4); }
+.neon-bg-pink { background: var(--neon-pink); color: #000; box-shadow: 0 0 10px rgba(255, 179, 230, 0.4); }
+
+/* ステッカーの共通レイアウト（色に依存せず、常に右上に丸く配置されるように修正） */
+.acid-sticker { 
+  position: absolute; z-index: 10; display: grid; place-items: center; 
+  font-family: var(--font-en); font-weight: 800; border: 1px solid #000; 
+  top: -15px; right: 20px; width: 44px; height: 44px; border-radius: 50%; 
+  font-size: 24px; transform: rotate(15deg); 
+}
 
 .acid-crosshair { position: absolute; width: 16px; height: 16px; z-index: 5; pointer-events: none; }
 .acid-crosshair::before, .acid-crosshair::after { content: ''; position: absolute; background: var(--neon-cyan); }

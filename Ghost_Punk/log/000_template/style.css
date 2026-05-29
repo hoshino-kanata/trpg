@@ -851,3 +851,14 @@ body.light-mode .rec-tags span { background: rgba(0, 0, 0, 0.03); border-color: 
   body.light-mode .rec-meta { border-bottom-color: rgba(0,0,0,0.1); }
   .rec-action { display: none; }
 }
+
+/* ▼ モーダル内のアコーディオンはスマホでも操作可能にし、「▼」を表示する特例ルール ▼ */
+@media (max-width: 899px) {
+  .modal__shell .accordion summary {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+  .modal__shell .sidebar-title::after {
+    display: block !important;
+  }
+}

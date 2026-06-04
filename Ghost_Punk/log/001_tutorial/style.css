@@ -54,7 +54,7 @@
   /* PINK */
   --name-pink: "PINK : WOLF";
   --icon-pink: url('../000_characters/CCicon_pink.webp');
-  --bg-pink: url('../000_characters/CCicon_pink.webp');
+  --bg-pink: url('../000_characters/bg_Wolf.webp');
 }
 
 body.light-mode {

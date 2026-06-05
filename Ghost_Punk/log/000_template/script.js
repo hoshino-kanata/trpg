@@ -188,3 +188,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// =========================================
+  // 3. 共通：HTML埋め込み型 タイピングデータ復元演出
+  // =========================================
+  document.body.addEventListener('click', (e) => {
+    // クリックされた要素、またはその親に指定のクラスがあるかチェック
+    const btn = e.target.closest('.js-corrupted-trigger');
+    if (!btn || btn.classList.contains('is-active')) return;
+
+    // 二重クリック防止
+    btn.classList.add('is-active');
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.5';
+
+    // 同じ階層から出力先とデータソースを取得
+    const container = btn.parentElement;
+    const destination = container.querySelector('.js-typing-destination');
+    const source = container.querySelector('.js-typing-source');
+
+    if (!destination || !source) return;
+
+    // templateタグからテキストを抽出
+    const rawText = source.innerHTML.trim();
+    let index = 0;
+    destination.classList.add('is-typing');
+
+    function typeClosure() {
+      if (index < rawText.length) {
+        // 1文字ずつ追加（改行コードをそのまま反映させるためにプレーンテキストで処理）
+        destination.textContent += rawText.charAt(index);
+        index++;
+
+        // 改行のときは少し長めにウェイトをかけるとリアルになるよ
+        let delay = Math.random() * 25 + 15;
+        if (rawText.charAt(index) === '\n') delay = 250;
+
+        setTimeout(typeClosure, delay);
+      } else {
+        // すべて打ち終わったらカーソルを消す
+        destination.classList.remove('is-typing');
+        destination.classList.add('is-done');
+      }
+    }
+
+    // 出力先を空にしてスタート
+    destination.textContent = '';
+    setTimeout(typeClosure, 400);
+  });
